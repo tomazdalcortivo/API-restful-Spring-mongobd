@@ -6,6 +6,7 @@ import com.mongobdteste.workshopmongo.servicos.ServicoUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,5 +27,11 @@ public class RecursoUsuario {
         List<Usuario> lista = servico.findAll();
         List<DTOUsuario> listaDto = lista.stream().map(x -> new DTOUsuario(x)).collect(Collectors.toList());
         return ResponseEntity.ok().body(listaDto);
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<DTOUsuario> findById(@PathVariable  String id) {
+        Usuario obj = servico.findById(id);
+        return ResponseEntity.ok().body(new DTOUsuario(obj));
     }
 }
