@@ -29,7 +29,7 @@ public class RecursoUsuario {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<DTOUsuario> findById(@PathVariable  String id) {
+    public ResponseEntity<DTOUsuario> findById(@PathVariable String id) {
         Usuario obj = servico.findById(id);
         return ResponseEntity.ok().body(new DTOUsuario(obj));
     }
@@ -40,5 +40,11 @@ public class RecursoUsuario {
         obj = servico.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable String id) {
+        servico.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
