@@ -53,7 +53,7 @@ public class RecursoUsuario {
     public ResponseEntity<Void> update(@RequestBody DTOUsuario objDto, @PathVariable String id) {
         Usuario obj = servico.fromDTO(objDto);
         obj.setId(id);
-        obj = servico.update(obj);
+        servico.update(obj);
         return ResponseEntity.noContent().build();
     }
 }
