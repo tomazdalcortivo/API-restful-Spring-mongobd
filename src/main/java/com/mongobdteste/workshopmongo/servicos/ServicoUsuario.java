@@ -38,6 +38,17 @@ public class ServicoUsuario {
         repo.deleteById(id);
     }
 
+    public Usuario update(Usuario obj){
+        Usuario newObj = findById(obj.getId());
+        updateData(newObj, obj);
+        return repo.save(newObj);
+    }
+
+    private void updateData(Usuario newObj, Usuario obj) {
+        newObj.setNome(obj.getNome());
+        newObj.setEmail(obj.getEmail());
+    }
+
     public Usuario fromDTO(DTOUsuario objDto){
         return new Usuario(objDto.getId(), objDto.getNome(), objDto.getEmail());
     }
