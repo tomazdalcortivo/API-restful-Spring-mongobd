@@ -1,9 +1,16 @@
 package com.mongobdteste.workshopmongo.dominio;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+//@Document(collection = "usuario") so o document mapeia com base no nome da entidade em lowcase
+@Document
 public class Usuario implements Serializable {
+
+    @Id
     private String id;
     private String nome;
     private String email;
