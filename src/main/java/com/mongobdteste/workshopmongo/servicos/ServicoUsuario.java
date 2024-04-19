@@ -4,7 +4,6 @@ import com.mongobdteste.workshopmongo.dominio.Usuario;
 import com.mongobdteste.workshopmongo.dto.DTOUsuario;
 import com.mongobdteste.workshopmongo.repositorio.RepositorioUsuario;
 import com.mongobdteste.workshopmongo.servicos.exception.ObjetoNotFoundException;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
