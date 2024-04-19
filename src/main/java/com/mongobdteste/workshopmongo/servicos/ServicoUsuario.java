@@ -1,6 +1,7 @@
 package com.mongobdteste.workshopmongo.servicos;
 
 import com.mongobdteste.workshopmongo.dominio.Usuario;
+import com.mongobdteste.workshopmongo.dto.DTOUsuario;
 import com.mongobdteste.workshopmongo.repositorio.RepositorioUsuario;
 import com.mongobdteste.workshopmongo.servicos.exception.ObjetoNotFoundException;
 import org.apache.catalina.User;
@@ -26,5 +27,13 @@ public class ServicoUsuario {
             throw new ObjetoNotFoundException("Objeto nâo encontrado");
         else
             return optionalUsuario.get();
+    }
+
+    public Usuario insert(Usuario obj){
+        return repo.insert(obj);
+    }
+
+    public Usuario fromDTO(DTOUsuario objDto){
+        return new Usuario(objDto.getId(), objDto.getNome(), objDto.getEmail());
     }
 }
