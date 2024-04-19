@@ -1,9 +1,12 @@
 package com.mongobdteste.workshopmongo.dominio;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 //@Document(collection = "usuario") so o document mapeia com base no nome da entidade em lowcase
@@ -15,6 +18,9 @@ public class Usuario implements Serializable {
     private String nome;
     private String email;
 
+    @DBRef(lazy = true)
+    private List<Post> posts = new ArrayList<>();
+
     public Usuario() {
     }
 
@@ -22,6 +28,14 @@ public class Usuario implements Serializable {
         this.email = email;
         this.id = id;
         this.nome = nome;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 
     public String getId() {

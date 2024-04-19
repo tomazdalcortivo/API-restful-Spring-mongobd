@@ -40,5 +40,8 @@ public class Instanciador implements CommandLineRunner {
         Post post2 = new Post(null, sdf.parse("22/03/2024"), "rolezou", "Vou viajar para o mexico", new DTOAutor(maria));
 
         repositorioPost.saveAll(Arrays.asList(post1, post2));
+
+        maria.getPosts().addAll(Arrays.asList(post1, post1));
+        repositorioUsuario.save(maria);
     }
 }
