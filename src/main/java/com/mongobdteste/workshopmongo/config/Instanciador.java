@@ -29,6 +29,7 @@ public class Instanciador implements CommandLineRunner {
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 
         repositorioUsuario.deleteAll();
+        repositorioPost.deleteAll();
 
         Usuario maria = new Usuario(null, "Maria Brown", "maria@gmail.com");
         Usuario alex = new Usuario(null, "Alex Green", "alex@gmail.com");
@@ -45,6 +46,7 @@ public class Instanciador implements CommandLineRunner {
         DTOComentario c3 = new DTOComentario("Sucesso", sdf.parse("24/03/2024"), new DTOAutor(alex));
 
         post1.getComentarios().addAll(Arrays.asList(c1, c2));
+        post2.getComentarios().add(c3);
 
         repositorioPost.saveAll(Arrays.asList(post1, post2));
 

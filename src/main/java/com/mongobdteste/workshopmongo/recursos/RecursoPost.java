@@ -21,6 +21,12 @@ public class RecursoPost {
     @Autowired
     private ServicoPost servico;
 
+    @GetMapping
+    public ResponseEntity<List<Post>> findAll(){
+        List<Post> list = servico.findAll();
+        return ResponseEntity.ok().body(list);
+    }
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<Post> findById(@PathVariable String id) {
         Post obj = servico.findById(id);
