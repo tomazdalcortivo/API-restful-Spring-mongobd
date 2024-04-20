@@ -3,6 +3,7 @@ package com.mongobdteste.workshopmongo.config;
 import com.mongobdteste.workshopmongo.dominio.Post;
 import com.mongobdteste.workshopmongo.dominio.Usuario;
 import com.mongobdteste.workshopmongo.dto.DTOAutor;
+import com.mongobdteste.workshopmongo.dto.DTOComentario;
 import com.mongobdteste.workshopmongo.repositorio.RepositorioPost;
 import com.mongobdteste.workshopmongo.repositorio.RepositorioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,12 @@ public class Instanciador implements CommandLineRunner {
 
         Post post1 = new Post(null, sdf.parse("21/03/2024"), "Partiu, role", "Vou viajar para floripa", new DTOAutor(maria));
         Post post2 = new Post(null, sdf.parse("22/03/2024"), "rolezou", "Vou viajar para o mexico", new DTOAutor(maria));
+
+        DTOComentario c1 = new DTOComentario("Boa, viagem mano", sdf.parse("21/03/2024"), new DTOAutor(alex));
+        DTOComentario c2 = new DTOComentario("Que dahora bro", sdf.parse("23/03/2024"), new DTOAutor(bob));
+        DTOComentario c3 = new DTOComentario("Sucesso", sdf.parse("24/03/2024"), new DTOAutor(alex));
+
+        post1.getComentarios().addAll(Arrays.asList(c1, c2));
 
         repositorioPost.saveAll(Arrays.asList(post1, post2));
 
