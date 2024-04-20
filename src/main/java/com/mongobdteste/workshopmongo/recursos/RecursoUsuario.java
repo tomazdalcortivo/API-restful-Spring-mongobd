@@ -1,5 +1,6 @@
 package com.mongobdteste.workshopmongo.recursos;
 
+import com.mongobdteste.workshopmongo.dominio.Post;
 import com.mongobdteste.workshopmongo.dominio.Usuario;
 import com.mongobdteste.workshopmongo.dto.DTOUsuario;
 import com.mongobdteste.workshopmongo.servicos.ServicoUsuario;
@@ -32,6 +33,11 @@ public class RecursoUsuario {
     public ResponseEntity<DTOUsuario> findById(@PathVariable String id) {
         Usuario obj = servico.findById(id);
         return ResponseEntity.ok().body(new DTOUsuario(obj));
+    }
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPost(@PathVariable String id) {
+        Usuario obj = servico.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts());
     }
 
     @PostMapping
